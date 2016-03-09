@@ -1,0 +1,4 @@
+--template=appdev_template.rb
+--skip-spring
+--skip-turbolinks
+--skip-test-unit
