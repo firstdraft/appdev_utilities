@@ -9,11 +9,19 @@ def path_to_file(filename)
   end
 end
 
+def path_to_blob(filename)
+  "https://raw.githubusercontent.com/firstdraft/grades_utilities/master/files/#{filename}"
+end
+
 def render_file(filename)
   if ENV == :prod
     require "open-uri"
 
-    File.open(path_to_file(filename)).read
+    begin
+      File.open(path_to_file(filename)).read
+    rescue
+      File.open(path_to_blob(filename)).read
+    end
   else
     IO.read(path_to_file(filename))
   end
