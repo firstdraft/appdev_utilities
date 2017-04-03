@@ -1,3 +1,5 @@
+require "open-uri"
+
 def path_to_file(filename)
   File.join(File.expand_path(File.dirname(__FILE__)), "files", filename)
 end
