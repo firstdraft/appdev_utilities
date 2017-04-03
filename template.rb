@@ -1,3 +1,5 @@
+require "open-uri"
+
 ENV = :prod
 # ENV = :dev
 
@@ -15,8 +17,6 @@ end
 
 def render_file(filename)
   if ENV == :prod
-    require "open-uri"
-
     begin
       File.open(path_to_file(filename)).read
     rescue
