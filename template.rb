@@ -1,11 +1,11 @@
 require "open-uri"
 
 def path_to_file(filename)
-  File.join(File.expand_path(File.dirname(__FILE__)), "files", filename)
+  File.join(__FILE__, "files", filename)
 end
 
 def render_file(filename)
-  IO.read(path_to_file(filename))
+  File.open(path_to_file(filename))
 end
 
 # Add a rails engine to provide /console in all apps
