@@ -1,17 +1,22 @@
-require "open-uri"
-require "pry"
-
-
+ENV = :prod
+# ENV = :dev
 
 def path_to_file(filename)
-
-  binding.pry;
-  File.join(File.expand_path(File.dirname(__FILE__)), "files", filename)
-
+  if ENV == :prod
+    "https://raw.githubusercontent.com/firstdraft/grades_utilities/master/#{filename}"
+  else
+    File.join(File.expand_path(File.dirname(__FILE__)), "files", filename)
+  end
 end
 
 def render_file(filename)
-  File.open(path_to_file(filename))
+  if ENV == :prod
+    require "open-uri"
+
+    File.open(path_to_file(filename)).read
+  else
+    IO.read(path_to_file(filename))
+  end
 end
 
 # Add a rails engine to provide /console in all apps
