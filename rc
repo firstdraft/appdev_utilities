@@ -1,5 +1,4 @@
 --template=template.rb
---skip-bundle
 --skip-spring
 --skip-turbolinks
 --skip-test-unit
