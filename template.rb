@@ -1,7 +1,10 @@
 require "open-uri"
+require "pry"
+
+binding.pry;
 
 def path_to_file(filename)
-  File.join(__FILE__, "files", filename)
+  File.join(File.expand_path(File.dirname(__FILE__)), "files", filename)
 end
 
 def render_file(filename)
